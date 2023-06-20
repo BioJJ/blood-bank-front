@@ -5,22 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { TemplateModule } from './template/template.module';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
 import { CandidatesModule } from './candidates/candidates.module';
 import { CandidatesService } from './candidates.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { LayoutComponent } from './layout/layout.component';
+import { TokenInterceptor } from './token.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginComponent,
-    LayoutComponent
-  ],
+  declarations: [AppComponent, HomeComponent, LoginComponent, LayoutComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -29,7 +25,15 @@ import { LayoutComponent } from './layout/layout.component';
     TemplateModule,
     CandidatesModule,
   ],
-  providers: [CandidatesService, AuthService],
-  bootstrap: [AppComponent]
+  providers: [
+    CandidatesService,
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

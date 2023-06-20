@@ -9,20 +9,27 @@ import { HomeComponent } from './home/home.component'
 import { CandidatesModule } from './candidates/candidates.module';
 import { CandidatesService } from './candidates.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './auth.service';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     TemplateModule,
     CandidatesModule,
   ],
-  providers: [CandidatesService],
+  providers: [CandidatesService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -63,6 +63,6 @@ export class CandidatesFormComponent implements OnInit {
   }
 
   voltarParaListagem() {
-    this.router.navigate(['/candidates-list']);
+    this.router.navigate(['/candidates/list']);
   }
 }

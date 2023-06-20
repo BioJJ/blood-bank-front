@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Candidate } from '../canditate';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { CandidatesService } from 'src/app/candidates.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-candidates-form',
@@ -10,20 +12,60 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CandidatesFormComponent implements OnInit {
   candidate: Candidate;
   success: boolean = false;
-  errors: String[] = [];
+  errors: string[] | null = null;
   id: number | null = null;
 
   constructor(
-    // private service: ClientesService ,
+    private service: CandidatesService ,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
     this.candidate = new Candidate();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let params : Observable<Params> = this.activatedRoute.params
+    params.subscribe( urlParams => {
+        this.id = urlParams['id'];
+        if(this.id){
+          this.service
+            .getCandidateById(this.id)
+            .subscribe( 
+              response => this.candidate = response ,
+              errorResponse => this.candidate = new Candidate()
+            )
+        }
+    })
+  }
 
-  onSubmit(){}
+  onSubmit(){
+    if(this.id){
+
+      this.service
+        .atualizar(this.candidate)
+        .subscribe(response => {
+            this.success = true;
+            this.errors = null;
+        }, errorResponse => {
+          this.errors = ['Erro ao atualizar o cliente.']
+        })
+
+
+    }else{
+
+      this.service
+        .salvar(this.candidate)
+          .subscribe( response => {
+            this.success = true;
+            this.errors = null;
+            this.candidate = response;
+          } , errorResponse => {
+            this.success = false;
+            this.errors = errorResponse.error.errors;
+          })
+
+    }
+  }
 
   voltarParaListagem(){
     this.router.navigate(['/candidates/lista'])

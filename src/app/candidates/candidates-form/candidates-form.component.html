@@ -1,0 +1,283 @@
+<h1 class="mt-4">Candidates</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">
+    {{ candidate.id ? "Edição" : "Cadastro" }}
+  </li>
+</ol>
+
+<div class="container">
+  <form #candidatesForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf="success == true">
+          Cliente salvo/atualizado com sucesso!
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngFor="let erro of errors"
+        >
+          {{ erro }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="candidate.id">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>ID:</label>
+          <input
+            type="text"
+            [ngModel]="candidate.id"
+            name="id"
+            class="form-control"
+            disabled="true"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Nome: *</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="candidate.nome"
+            name="nome"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>CPF: *</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="candidate.cpf"
+            name="cpf"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>RG:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="rg"
+            [ngModel]="candidate.rg"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Data de Nascimento:</label>
+          <input
+            type="date"
+            class="form-control"
+            name="data_nasc"
+            [ngModel]="candidate.data_nasc"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>sexo:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="sexo"
+            [ngModel]="candidate.sexo"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>mae:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="mae"
+            [ngModel]="candidate.mae"
+          />
+        </div>
+      </div>
+      <hr class="hr" />
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>pai:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="pai"
+            [ngModel]="candidate.pai"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>email:</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            [ngModel]="candidate.email"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>telefone fixo:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="telefone_fixo"
+            [ngModel]="candidate.telefone_fixo"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>celular:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="celular"
+            [ngModel]="candidate.celular"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>altura:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="altura"
+            [ngModel]="candidate.altura"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>peso:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="peso"
+            [ngModel]="candidate.peso"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>tipo sanguineo</label>
+          <input
+            type="text"
+            class="form-control"
+            name="tipo_sanguineo"
+            [ngModel]="candidate.tipo_sanguineo"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <ol class="breadcrumb mb-4">
+          <li class="breadcrumb-item active">Endereço</li>
+        </ol>
+      </div>
+
+      <div class="col-md-8">
+        <div class="form-group">
+          <label>Endereço</label>
+          <input
+            type="text"
+            class="form-control"
+            name="address"
+            [ngModel]="candidate.address?.endereco"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Número</label>
+          <input
+            type="number"
+            class="form-control"
+            name="numero"
+            [ngModel]="candidate.address?.numero"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Bairro</label>
+          <input
+            type="text"
+            class="form-control"
+            name="bairro"
+            [ngModel]="candidate.address?.bairro"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Cidade</label>
+          <input
+            type="text"
+            class="form-control"
+            name="cidade"
+            [ngModel]="candidate.address?.cidade"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Estado</label>
+          <input
+            type="text"
+            class="form-control"
+            name="estado"
+            [ngModel]="candidate.address?.estado"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-success" *ngIf="!candidate.id">
+          <i class="fa fa-save"></i> Salvar
+        </button>
+
+        <button type="submit" class="btn btn-primary" *ngIf="candidate.id">
+          <i class="fa fa-sync-alt"></i> Atualizar
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-danger ml-1"
+          (click)="voltarParaListagem()"
+        >
+          <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

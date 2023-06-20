@@ -138,7 +138,7 @@
         <div class="form-group">
           <label>telefone fixo:</label>
           <input
-            type="number"
+            type="text"
             class="form-control"
             name="telefone_fixo"
             [ngModel]="candidate.telefone_fixo"
@@ -150,7 +150,7 @@
         <div class="form-group">
           <label>celular:</label>
           <input
-            type="number"
+            type="text"
             class="form-control"
             name="celular"
             [ngModel]="candidate.celular"
@@ -207,7 +207,7 @@
             type="text"
             class="form-control"
             name="address"
-            [ngModel]="candidate.address"
+            [ngModel]="candidate.address?.endereco"
           />
         </div>
       </div>
@@ -218,7 +218,7 @@
             type="number"
             class="form-control"
             name="numero"
-            [ngModel]="candidate.numero"
+            [ngModel]="candidate.address?.numero"
           />
         </div>
       </div>
@@ -230,7 +230,7 @@
             type="text"
             class="form-control"
             name="bairro"
-            [ngModel]="candidate.bairro"
+            [ngModel]="candidate.address?.bairro"
           />
         </div>
       </div>
@@ -242,7 +242,7 @@
             type="text"
             class="form-control"
             name="cidade"
-            [ngModel]="candidate.cidade"
+            [ngModel]="candidate.address?.cidade"
           />
         </div>
       </div>
@@ -254,7 +254,7 @@
             type="text"
             class="form-control"
             name="estado"
-            [ngModel]="candidate.estado"
+            [ngModel]="candidate.address?.estado"
           />
         </div>
       </div>

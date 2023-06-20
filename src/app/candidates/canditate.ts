@@ -1,3 +1,5 @@
+import { Address } from "./Address";
+
 export class Candidate {
   id: number | null = null;
   nome: string = '';
@@ -13,9 +15,5 @@ export class Candidate {
   altura: string = '';
   peso: string = '';
   tipo_sanguineo: string = '';
-  address: string = '';
-  numero: string = '';
-  bairro: string = '';
-  cidade: string = '';
-  estado: string = '';
+  address: Address | null = null;
 }

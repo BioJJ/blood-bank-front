@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment'
 import { Candidate } from './candidates/canditate';
+import { PaginaCandidate } from './candidates/PaginaCandidate';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,13 @@ export class CandidatesService {
 
   getCandidate() : Observable<Candidate[]> {
     return this.http.get<Candidate[]>(this.apiURL);
+  }
+
+  list(page: any, size: any) : Observable<PaginaCandidate> {
+    const params = new HttpParams()
+    .set('page', page)
+    .set('size', size)
+    return this.http.get<any>(`${this.apiURL}?${params.toString()}`);
   }
   
   getCandidateById(id: number) : Observable<Candidate> {

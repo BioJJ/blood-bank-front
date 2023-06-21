@@ -16,18 +16,22 @@ import { LayoutComponent } from './layout/layout.component';
 import { TokenInterceptor } from './token.interceptor';
 import { DashboardService } from './dashboard.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, LoginComponent, LayoutComponent],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,
     AppRoutingModule,
     TemplateModule,
     CandidatesModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     CandidatesService,

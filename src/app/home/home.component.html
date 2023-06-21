@@ -1,4 +1,129 @@
-<h1 class="mt-4">Home</h1>
+<h1 class="mt-4">Dashboard</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Bem vindo</li>
+  <li class="breadcrumb-item active">Bem vindo</li>
 </ol>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-6">
+        Qual o percentual de obesos entre os homens e entre as mulheres? (É obeso
+        quem tem IMC >30)
+      </div>
+    
+
+    <div class="col-md-6">Qual a média de idade para cada tipo sanguíneo</div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-3">
+        <table class="table table-condensed table-hover">
+          <caption>Homens</caption>
+          <thead>
+            <tr>
+              <th>Total</th>
+              <th>total de Obesos</th>
+              <th>Porcentagem de Obesos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let candidate of percentObeseMen">
+              <td>{{ candidate.total }}</td>
+              <td>{{ candidate.totalObese }}</td>
+              <td>{{ candidate.percentageObese }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-3">
+        <table class="table table-condensed table-hover">
+          <caption>Mulheres</caption>
+          <thead>
+            <tr>
+              <th>Total</th>
+              <th>total de Obesos</th>
+              <th>Porcentagem de Obesos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let candidate of percentObeseWoman">
+              <td>{{ candidate.total }}</td>
+              <td>{{ candidate.totalObese }}</td>
+              <td>{{ candidate.percentageObese }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    
+
+    <div class="col-md-6">
+      <table class="table table-condensed table-hover">
+        <caption></caption>
+        <thead>
+          <tr>
+            <th>Estado</th>
+            <th>Quantidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let candidate of averageByBlood">
+            <td>{{ candidate.bloodType }}</td>
+            <td>{{ candidate.average }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      A quantidade de possíveis doadores para cada tipo sanguíneo receptor.
+    </div>
+
+    <div class="col-md-6">
+        Quantos candidatos temos nessa lista em cada estado do Brasil
+      </div>
+   
+
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-condensed table-hover">
+          <caption></caption>
+          <thead>
+            <tr>
+              <th>receptor</th>
+              <th>Quantidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let candidate of donorsForEachBloodType">
+              <td>{{ candidate.receiver }}</td>
+              <td>{{ candidate.quantity }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-condensed table-hover">
+          <caption></caption>
+          <thead>
+            <tr>
+              <th>Estado</th>
+              <th>Quantidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let candidate of candidates">
+              <td>{{ candidate.state }}</td>
+              <td>{{ candidate.amount }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br />
+
+    </div>
+  </div>

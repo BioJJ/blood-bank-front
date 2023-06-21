@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { LayoutComponent } from './layout/layout.component';
 import { TokenInterceptor } from './token.interceptor';
+import { DashboardService } from './dashboard.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, LoginComponent, LayoutComponent],
@@ -24,10 +26,12 @@ import { TokenInterceptor } from './token.interceptor';
     AppRoutingModule,
     TemplateModule,
     CandidatesModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     CandidatesService,
     AuthService,
+    DashboardService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
